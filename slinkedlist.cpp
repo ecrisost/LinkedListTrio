@@ -131,6 +131,20 @@ T* SLinkedList<T>::Retrieve(T item)
 
 }
 
+//print list
+template <class T>
+void SLinkedList<T>::PrintArray() const
+{
+	Node<T>*temp_ptr = front;
+
+	while(temp_ptr != NULL)
+	{
+		//iterate through the list and print the contents
+		std::cout << temp_ptr->data << " ";
+		temp_ptr = temp_ptr->next;
+	}
+}
+
 // || MUTATORS ||
 
 //insert front
