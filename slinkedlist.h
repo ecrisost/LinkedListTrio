@@ -68,6 +68,10 @@ class SLinkedList
 		//if the item is in the list, return true
 		//if the item is not in the list, return false
 		bool InsertBack(T item);
+		
+		//|| SORT LIST ||
+		//using selection sort, sort the list
+		void SortList();
 
 		//|| REMOVE ||
 		//removes an item in the list
@@ -94,6 +98,9 @@ class SLinkedList
 		// || GETSIZE ||
 		//size of the list
 		int GetSize() const;
+		
+		// || PRINT ARRAY||
+		void PrintArray() const;
 
 		//|| OVERLOADED OPERATORS ||
 
