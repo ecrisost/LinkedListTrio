@@ -131,6 +131,20 @@ T* SLinkedList<T>::Retrieve(T item)
 
 }
 
+//print list
+template <class T>
+void SLinkedList<T>::PrintArray() const
+{
+	Node<T>*temp_ptr = front;
+
+	while(temp_ptr != NULL)
+	{
+		//iterate through the list and print the contents
+		std::cout << temp_ptr->data << " ";
+		temp_ptr = temp_ptr->next;
+	}
+}
+
 // || MUTATORS ||
 
 //insert front
@@ -260,6 +274,39 @@ bool SLinkedList<T>::Remove(T item)
 	return is_removed;
 }
 
+//sort using selection sort
+template <class T>
+void SLinkedList<T>::SortList()
+{
+	Node<T>*min_ptr = NULL;//pointer to the smallest data
+	Node<T>* temp_ptr = front;//first iterator to divide the list between unsorted and sorted
+	Node<T>* temp_ptr2 = front;//second iterator to find the smallest data
+	T temp_data;//holds the data for swapping
+
+	for(temp_ptr = front; temp_ptr->next != NULL; temp_ptr = temp_ptr->next)
+	{
+		//sets where the sorted and unsorted halves are
+		min_ptr = temp_ptr;
+
+		for(temp_ptr2 = temp_ptr->next; temp_ptr2 != NULL; temp_ptr2 = temp_ptr2->next)
+		{
+			if(temp_ptr2->data < min_ptr->data)
+			{
+				//finds the smalles data
+				min_ptr = temp_ptr2;
+			}
+
+		}
+		if(min_ptr != temp_ptr)
+		{
+			//swap
+			temp_data = min_ptr->data;
+			min_ptr->data = temp_ptr->data;
+			temp_ptr->data  = temp_data;
+		}
+	}
+
+}
 //|| OVERLOADED ASSIGNMENT OPERATORS ||
 template <class T>
 SLinkedList<T>& SLinkedList<T>::operator =(const SLinkedList<T>& ll)
